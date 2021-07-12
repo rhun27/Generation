@@ -15,11 +15,15 @@ public class Viaggio {
 	private int id;
 	private String destinazione;
 	private int durata;
+	//@Column(name="prezzo_persona")
 	private double prezzoPersona;
 
-	public Viaggio() {}
+	public Viaggio() {
+		super();
+	}
 
 	public Viaggio(int id, String destinazione, int durata, double prezzoPersona) {
+		super();
 		this.id = id;
 		this.destinazione = destinazione;
 		this.durata = durata;
