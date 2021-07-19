@@ -65,18 +65,13 @@
 	var prezzoPersona = document.getElementById('persona');
 	
 	//imposto prezzo totale con un passeggero
-	prezzoTot.innerHTML = Number(passeggeri.value) * Number(prezzoPersona.value);
+	prezzoTot.innerHTML = parseInt(passeggeri.value) * parseInt(prezzoPersona.innerText);
 	
 	passeggeri.addEventListener('change', controlla, false);
 
 	function controlla() {
-		console.log(passeggeri.value);
-		console.log(typeof(passeggeri));
-		console.log(Number(prezzoPersona.value));
-		console.log(typeof(prezzoPersona));
-		
 		//quando il n passeggeri cambia aggiorno il campo prezzo tot
-		// prezzoTot.innerHTML = Number(passeggeri.value) * Number(prezzoPersona);
+		prezzoTot.innerHTML = Number(passeggeri.value) * Number(prezzoPersona.innerText);
 	}
 
 	$('#btnExit').on('click', function() {

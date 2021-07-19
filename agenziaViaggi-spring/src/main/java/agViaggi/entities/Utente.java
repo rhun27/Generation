@@ -16,11 +16,10 @@ public class Utente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome, cognome, email;
+	//@Column(name="numero_carta")
 	private BigInteger numeroCarta;
 
-	public Utente() {
-		
-	}
+	public Utente() {}
 
 	public Utente( String nome, String cognome, String email, BigInteger numeroCarta) {
 		this.nome = nome;
