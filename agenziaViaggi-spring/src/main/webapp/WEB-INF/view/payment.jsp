@@ -18,17 +18,16 @@
 			Viaggio v = (Viaggio) request.getAttribute("viaggio");
 			%>
 			<h1>
-				Destinazione:
+			Destinazione:
 				<%=v.getDestinazione()%>
 			</h1>
+			Prezzo:
 			<p id="persona">
-				Prezzo:
 				<%=v.getPrezzoPersona()%>
 			</p>
+			Durata:
 			<p>
-				Durata:
 				<%=v.getDurata()%>
-				Ore
 			</p>
 		</div>
 
@@ -46,13 +45,13 @@
 				<option value="american">AMERICAN EXPRESS</option>
 			</select>
 			<input type="text" name="nCarta" id="nCarta" placeholder="inserisci numero carta">
-			<input type="text" min="1" name="passeggeri" id="passeggeri" placeholder="numero passeggeri">
+			<input type="number" min="1" value="1" name="passeggeri" id="passeggeri" placeholder="numero passeggeri">
 			<!--<label for="prezzoTotale"> Prezzo Totale </label>  -->
 			<input type="submit" id="acquista" value="Acquista">
 			<input type="hidden" name="idViaggio" value="<%=v.getId() %>">
 		</form>
 		<button id="btnExit">Esci</button>
-		<input type="text" id="prezzo">
+		<p id="prezzoTot"></p>
 
 	</div>
 
@@ -61,16 +60,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script type="text/javascript">
-	var prezzo = document.getElementById('prezzo'); 
-	var pass = document.getElementById('passeggeri'); 
-	var pp = document.getElementById('persona').value;
-
-	pass.addEventListener('focus', calcola, false); 
-
-	function calcola() {
-    	prezzo.innerHTML = Number(pass) * pp + "$";
-	}
+	var prezzoTot = document.getElementById('prezzoTot'); 
+	var passeggeri = document.getElementById('passeggeri'); 
+	var prezzoPersona = document.getElementById('persona');
 	
+	//imposto prezzo totale con un passeggero
+	prezzoTot.innerHTML = Number(passeggeri.value) * Number(prezzoPersona.value);
+	
+	passeggeri.addEventListener('change', controlla, false);
+
+	function controlla() {
+		console.log(passeggeri.value);
+		console.log(typeof(passeggeri));
+		console.log(Number(prezzoPersona.value));
+		console.log(typeof(prezzoPersona));
+		
+		//quando il n passeggeri cambia aggiorno il campo prezzo tot
+		// prezzoTot.innerHTML = Number(passeggeri.value) * Number(prezzoPersona);
+	}
+
 	$('#btnExit').on('click', function() {
 		window.location.href="/uscita.html";
 	});
